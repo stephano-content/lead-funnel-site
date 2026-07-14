@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[TU MARCA] — Recibí tu Plan Personalizado</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="pill" id="socialProof">
+    <div class="avatars">
+      <span class="avatar"></span>
+      <span class="avatar"></span>
+      <span class="avatar"></span>
+    </div>
+    <span>[TU RESULTADO DESTACADO — ej: +500 clientes atendidos]</span>
+  </div>
+
+  <header class="hero">
+    <h1>Recibí Gratis tu Plan Personalizado<br>en menos de 30 segundos</h1>
+    <p class="subtitle">Respondé 2 preguntas rápidas y te armamos un plan a medida para [TU OFERTA / RUBRO].</p>
+
+    <div class="cards-mock" aria-hidden="true">
+      <div class="card card-left">
+        <div class="card-title">Paso 1</div>
+        <div class="card-line"></div>
+        <div class="card-line short"></div>
+        <div class="card-line"></div>
+      </div>
+      <div class="card card-center">
+        <div class="card-title">Tu Plan</div>
+        <div class="progress-ring"></div>
+        <div class="card-line"></div>
+        <div class="card-line short"></div>
+      </div>
+      <div class="card card-right">
+        <div class="card-title">Paso 2</div>
+        <div class="card-line"></div>
+        <div class="card-line short"></div>
+        <div class="card-line"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="quiz-wrapper">
+    <section class="quiz-card" id="quizCard">
+
+      <!-- Step 1 -->
+      <div class="quiz-step active" data-step="1">
+        <h2>¿Qué tipo de negocio tenés?</h2>
+        <div class="options">
+          <button class="option" data-field="tipo_negocio" data-value="Coaching / Consultoría">Coaching / Consultoría <span>→</span></button>
+          <button class="option" data-field="tipo_negocio" data-value="Agencia / Servicios">Agencia / Servicios <span>→</span></button>
+          <button class="option" data-field="tipo_negocio" data-value="Ecommerce / Producto">Ecommerce / Producto <span>→</span></button>
+          <button class="option" data-field="tipo_negocio" data-value="Otro">Otro <span>→</span></button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="quiz-step" data-step="2">
+        <h2>¿Cuál es tu objetivo principal ahora?</h2>
+        <div class="options">
+          <button class="option" data-field="objetivo" data-value="Conseguir más clientes">Conseguir más clientes <span>→</span></button>
+          <button class="option" data-field="objetivo" data-value="Ordenar procesos">Ordenar procesos <span>→</span></button>
+          <button class="option" data-field="objetivo" data-value="Escalar el equipo">Escalar el equipo <span>→</span></button>
+          <button class="option" data-field="objetivo" data-value="Otro">Otro <span>→</span></button>
+        </div>
+      </div>
+
+      <!-- Step 3: contact form -->
+      <div class="quiz-step" data-step="3">
+        <h2>Casi listo — ¿a dónde te enviamos el plan?</h2>
+        <form id="leadForm">
+          <input type="text" name="nombre" placeholder="Nombre completo" required>
+          <input type="email" name="email" placeholder="Correo electrónico" required>
+          <input type="tel" name="telefono" placeholder="Teléfono (con código de país)" required>
+          <button type="submit" class="submit-btn">Recibir mi plan gratis</button>
+        </form>
+      </div>
+
+      <!-- Step 4: thank you -->
+      <div class="quiz-step" data-step="4">
+        <h2>¡Listo! 🎉</h2>
+        <p>Recibimos tus datos, en breve te contactamos con tu plan personalizado.</p>
+      </div>
+
+    </section>
+
+    <ul class="benefits">
+      <li>Recibí tu plan personalizado en menos de 30 segundos</li>
+      <li>100% gratuito — acceso instantáneo</li>
+      <li>Sin compromiso</li>
+    </ul>
+
+    <p class="disclaimer">Al dejar tus datos aceptás que [TU MARCA] se ponga en contacto con vos por teléfono, mensaje o correo. No compartimos tu información con terceros.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

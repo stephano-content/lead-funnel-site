@@ -2,7 +2,8 @@
 // CONFIGURACIÓN DE AIRTABLE
 // ==============================================
 // 1. Creá una base en https://airtable.com con una tabla (ej: "Leads")
-//    con columnas: nombre, email, telefono, tipo_negocio, objetivo.
+//    con columnas: nombre, email, telefono, situacion, seguidores,
+//    objetivo, presupuesto, urgencia.
 // 2. Generá un token en https://airtable.com/create/tokens
 //    - Alcance (scope): SOLO "data.records:write"
 //    - Acceso: SOLO a esta base específica (no a todas tus bases)
@@ -17,13 +18,29 @@ const AIRTABLE_TOKEN = "PEGA_TU_TOKEN_SOLO_ESCRITURA_AQUI";
 
 const answers = {};
 let currentStep = 1;
-const totalSteps = 4;
+const totalQuestionSteps = 5; // pasos 1–5 son preguntas de calificación
+const totalSteps = 7; // 5 preguntas + formulario de contacto + agradecimiento
+
+const progressLabel = document.getElementById("progressLabel");
+const progressFill = document.getElementById("progressFill");
+const quizProgress = document.getElementById("quizProgress");
+
+function updateProgress(step) {
+  if (step <= totalQuestionSteps) {
+    quizProgress.style.display = "block";
+    progressLabel.textContent = `Pregunta ${step} de ${totalQuestionSteps}`;
+    progressFill.style.width = `${(step / totalQuestionSteps) * 100}%`;
+  } else {
+    quizProgress.style.display = "none";
+  }
+}
 
 function goToStep(step) {
   document.querySelectorAll(".quiz-step").forEach((el) => {
     el.classList.toggle("active", Number(el.dataset.step) === step);
   });
   currentStep = step;
+  updateProgress(step);
 }
 
 document.querySelectorAll(".option").forEach((btn) => {
@@ -51,11 +68,11 @@ leadForm.addEventListener("submit", async (e) => {
 
   try {
     await sendToAirtable(payload);
-    goToStep(4);
+    goToStep(7);
   } catch (err) {
     console.error("Error enviando a Airtable:", err);
     submitBtn.disabled = false;
-    submitBtn.textContent = "Recibir mi plan gratis";
+    submitBtn.textContent = "Quiero mi plan personalizado";
     alert("Hubo un problema enviando tus datos. Probá de nuevo en unos segundos.");
   }
 });
@@ -84,3 +101,6 @@ async function sendToAirtable(fields) {
     throw new Error(`Airtable respondió ${res.status}`);
   }
 }
+
+// Inicializa la barra de progreso en el primer paso
+updateProgress(1);

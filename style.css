@@ -1,18 +1,21 @@
 :root {
   --bg: #ffffff;
-  --ink: #0a0a0a;
-  --muted: #6b6b6b;
-  --card-dark: #111111;
-  --accent: #f5a623;
-  --border: #e6e6e6;
+  --ink: #17140f;
+  --muted: #6e6a63;
+  --card-dark: #17140f;
+  --accent: #b8541a;
+  --accent-soft: #f3e4d8;
+  --border: #e7e2db;
   --radius: 16px;
+  --font-display: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Arial, sans-serif;
+  font-family: var(--font-body);
   color: var(--ink);
   background: var(--bg);
 }
@@ -30,7 +33,7 @@ body {
   width: fit-content;
   font-size: 14px;
   color: var(--muted);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 16px rgba(23,20,15,0.04);
 }
 
 .avatars { display: flex; }
@@ -38,7 +41,7 @@ body {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #333, #666);
+  background: linear-gradient(135deg, var(--accent), #e0a679);
   border: 2px solid #fff;
   margin-left: -8px;
 }
@@ -47,16 +50,28 @@ body {
 /* Hero */
 .hero {
   text-align: center;
-  padding: 48px 20px 24px;
+  padding: 40px 20px 24px;
   max-width: 900px;
   margin: 0 auto;
 }
 
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--accent);
+  margin: 0 0 14px;
+}
+
 .hero h1 {
-  font-size: clamp(28px, 5vw, 48px);
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 46px);
   font-weight: 800;
   line-height: 1.15;
   margin: 0 0 16px;
+  letter-spacing: -0.01em;
 }
 
 .subtitle {
@@ -64,6 +79,7 @@ body {
   font-size: 18px;
   max-width: 560px;
   margin: 0 auto;
+  line-height: 1.5;
 }
 
 /* Card mockup */
@@ -71,7 +87,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: -20px;
   margin: 48px auto 0;
   max-width: 700px;
   position: relative;
@@ -85,22 +100,22 @@ body {
   color: #fff;
   width: 220px;
   position: absolute;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  box-shadow: 0 20px 40px rgba(23,20,15,0.22);
 }
 
 .card-left { transform: rotate(-8deg) translateX(-130px); z-index: 1; opacity: 0.85; }
 .card-right { transform: rotate(8deg) translateX(130px); z-index: 1; opacity: 0.85; }
 .card-center { z-index: 2; height: 220px; }
 
-.card-title { font-weight: 700; margin-bottom: 14px; font-size: 14px; }
-.card-line { height: 8px; background: #333; border-radius: 4px; margin-bottom: 8px; }
+.card-title { font-family: var(--font-display); font-weight: 700; margin-bottom: 14px; font-size: 13px; }
+.card-line { height: 8px; background: #3a352d; border-radius: 4px; margin-bottom: 8px; }
 .card-line.short { width: 60%; }
 .progress-ring {
   width: 56px;
   height: 56px;
   border-radius: 50%;
   border: 6px solid var(--accent);
-  border-right-color: #333;
+  border-right-color: #3a352d;
   margin: 0 auto 14px;
 }
 
@@ -115,7 +130,29 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 32px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(23,20,15,0.06);
+}
+
+.quiz-progress { margin-bottom: 22px; }
+.progress-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.progress-track {
+  height: 4px;
+  background: var(--accent-soft);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 20%;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 0.3s ease;
 }
 
 .quiz-step { display: none; }
@@ -127,9 +164,12 @@ body {
 }
 
 .quiz-step h2 {
-  font-size: 22px;
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 700;
   margin: 0 0 20px;
   text-align: center;
+  line-height: 1.3;
 }
 
 .options {
@@ -147,14 +187,16 @@ body {
   border: 1px solid var(--border);
   border-radius: 12px;
   background: #fff;
+  font-family: var(--font-body);
   font-size: 16px;
   text-align: left;
   cursor: pointer;
   transition: border-color 0.15s, background 0.15s;
 }
 
-.option:hover { border-color: var(--ink); background: #fafafa; }
+.option:hover { border-color: var(--accent); background: var(--accent-soft); }
 .option span { color: var(--muted); }
+.option:hover span { color: var(--accent); }
 
 #leadForm {
   display: flex;
@@ -167,6 +209,13 @@ body {
   border: 1px solid var(--border);
   border-radius: 12px;
   font-size: 16px;
+  font-family: var(--font-body);
+}
+
+#leadForm input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
 }
 
 .submit-btn {
@@ -175,14 +224,44 @@ body {
   border-radius: 12px;
   background: var(--ink);
   color: #fff;
+  font-family: var(--font-body);
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   margin-top: 4px;
 }
 
-.submit-btn:hover { opacity: 0.9; }
+.submit-btn:hover { background: var(--accent); }
 .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.thankyou-text {
+  text-align: center;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+  max-width: 440px;
+  margin: 0 auto 24px;
+}
+
+.whatsapp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.whatsapp-btn:hover { opacity: 0.9; }
+.whatsapp-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 .benefits {
   list-style: none;
